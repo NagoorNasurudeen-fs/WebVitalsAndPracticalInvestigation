@@ -8,16 +8,16 @@
 
 *Core Web Vitals* are a subset of web vitals that are key indicators of page experience and search engine ranking. It includes LCP (Largest contentful paint) , INP (Interaction to Next Paint) and CLS (Cumulative Layout Shift). These metrics reflects loading speed, responsiveness and visual stabilty respectfully. 
 
-###     
+### FCP (First Contentful Paint)  
 
-The time form when the user starts loading the webpage until the first piece of the content is rendered. 
+The time from when the user starts loading the webpage until the first piece of the content is rendered. 
 
 Good threshold : less than 1.8 seconds
 
 #### Commom causes of poor FCP
 
 1. Slow server response (TTFB)
-2. Render Bloacking CSS.
+2. Render Blocking CSS.
 3. Large js bundles
 4. Slow network connection
 5. Excessive redirects
@@ -30,28 +30,28 @@ Good threshold : 2.5 seconds.
 
 #### commom causes of poor LCP
 
-1. Hight TTFB
+1. High TTFB
 2. Slow network
-3. render blocking javascript
+3. Render blocking javascript
 4. Resource delay
 5. Uncompressed Image is used
 
 ### TBT (Total Blocking Time)
 
-It is one of the most important metric in accessing webpage responsiveness. It is total amount of time between First contentful paint and TTi (Time T interactive). It is the time where the browser cannot paint and respond to the user inputs.
+It is one of the most important metric in accessing webpage responsiveness. It is the total amount of time between First contentful paint and TTI (Time To interactive). It is the time where the browser cannot paint and respond to the user inputs.
 
 Good threshold : 0 - 100ms
 
 #### commom causes of poor TBT
 
-1. Running large task in the browser;s single thread.
+1. Running large task in the browser's single thread.
 2. Monolithic heavy  js bundles.
-3. Reduntant an third part libraries
+3. Reduntant js and third party libraries
 4. Complex layout calculations
 
 ### CLS (Cumulative Layout Shift)
 
-It is third pillar in the core web vitals which focus on visual stabilty . It addressses the most frustrating issue i.e. the unexpected movement of an element while reading or interacting with it. CLS measures the sum total of all unexpected layout shifts that occur during the entire lifespan of a page.A layout shift happens at any time a visible elements change its position in one rendered frame to the next. 
+It is the third pillar in the core web vitals which focus on visual stabilty . It addressses the most frustrating issue i.e. the unexpected movement of an element while reading or interacting with it. CLS measures the sum total of all unexpected layout shifts that occur during the entire lifespan of a page.A layout shift happens at any time a visible elements change its position in one rendered frame to the next. 
 
 It is calculated as Impact fraction * Distance fraction.
 
@@ -63,12 +63,12 @@ Good threshold : 0-0.1
 #### commom causes of poor CLS
 
 1. Not mentioning height and width in the element
-2. Dynamically injected contents is not configurd early
+2. Dynamically injected contents is not configurd early like ends
 3. Flash of unstyled text
 
 ### SI (Speed Index)
 
-It measures how quickly the contents of the page is visually populated during its loading sequence.It captures frame by frame loading behavior. For example consider two site if site 1 loads progressively and finish loading in its 4th second and site 2 show blank screen for 3.8 seconds and suddenly loads and completes loading in its 4th second, then we say site 1 has high speed index but site 2 is less since it shows black screen.
+It measures how quickly the contents of the page is visually populated during its loading sequence.It captures frame by frame loading behavior. For example consider two sites if site 1 loads progressively and finish loading in its 4th second and site 2 show blank screen for 3.8 seconds and suddenly loads and completes loading in its 4th second, then we say site 1 has high speed index but site 2 is less since it shows black screen.
 
 Good threshold : 3.4 seconds
 
@@ -80,7 +80,7 @@ Good threshold : 3.4 seconds
 
 ### Lab data (Lighthouse) vs Field data (CrUX/RUM) 
 
-Lighthouse : It uses artificial synthetic environment to analyse the webite ny simulating networks ,throttling of a mid tier device. It suggests tips and provides diagnostic to level the overall score of the website. But it cannot reflect real user behavior.
+Lighthouse : It uses artificial synthetic environment to analyse the webite by simulating networks ,throttling for a mid tier device. It suggests tips and provides diagnostics to level up the overall score of the website. But it cannot reflect real user behavior.
 
 Field data : These are real data collected from real users using CrUX (Chrome User Experirence) or by ourself from RUM(Real User Monitoring). It captures real user behavior and spots exact problems and bottlenecks.
 
@@ -113,7 +113,7 @@ These two source may differ in data due to device discrepency and unpredictable 
 
 ### Root-Cause Notes
 1. Blocking JavaScript increasing TBT
-2. Diemensions are not explicitly given increasing CLS
+2. Dimensions are not explicitly given increasing CLS
 3. Large  image delaying LCP
 4. Render blocking increases FCP
 5. Network dependency tree increases TBT
@@ -127,4 +127,4 @@ These two source may differ in data due to device discrepency and unpredictable 
 
 ### The most impactful first recommendation
 
-1. TBT: defer non-critical JS, split long tasks, load third-party scripts asynchronously
+1. LCP: compress/resize hero image, serve WebP/AVIF, add preload for hero image
